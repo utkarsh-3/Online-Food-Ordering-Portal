@@ -1,0 +1,39 @@
+﻿@model EatFit.Models.FoodItem
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div style="text-align:center;">
+    <h2 style="color:brown"> @Model.Name</h2>
+    <div style="padding:5px;">
+        <img src="@Model.ImageUrl" style="width:500px; height:350px;" />
+    </div>
+    <hr/>
+    <div style="padding:5px;">
+        <strong>Speciality: </strong> @Model.ShortDescription
+    </div>
+    <div style="padding:5px;">
+        <strong>Description: </strong> @Model.LongDescription
+    </div>
+    <div style="padding:5px;">
+        <strong>Food Type: </strong> @Model.FoodType
+    </div>
+
+    <div style="padding:5px;">
+        <strong>Category: </strong> @Model.CategoryName
+    </div>
+    <div style="padding:5px;">
+        <strong>Price: </strong> &#8377 @Model.Cost
+    </div>
+    <div style="padding:5px;">
+        <strong>Veg: </strong> @Model.IsVeg
+    </div>
+    <div style="padding:5px;">
+        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-ItemId="@Model.Id" target="_blank" class="btn btn-success btn-sm">Add to Cart</a>
+    </div>
+    <div>
+
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

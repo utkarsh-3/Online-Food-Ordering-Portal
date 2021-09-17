@@ -1,0 +1,80 @@
+﻿@model ShoppingCartViewModel
+   
+
+    <div style="padding-top:80px">
+        <h2>Here's Your Food Cart!</h2>
+        <h3>Delicious Food!</h3>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="text-left">FoodItem</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-right">Sub Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+                {
+                    <tr>
+                        <td class="text-left">
+                            @item.foodItem.Name
+                        </td>
+                        <td class="text-right">
+                            @item.foodItem.Cost
+                        </td>
+
+                        <td class="text-center">
+                            <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-fooditemid="@item.foodItem.Id">-</a>
+                            &nbsp; @item.Amount &nbsp;
+                            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-fooditemid="@item.foodItem.Id">+</a>
+                        </td>
+                        <td class="text-right">&#8377;@((item.Amount * item.foodItem.Cost))</td>
+                    </tr>
+
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total:</td>
+                    <td class="text-right">
+                        &#8377;@Model.ShoppingCartTotal
+                    </td>
+                </tr>
+                @{
+                    var tag = "";
+                    if (Model.ShoppingCartTotal == 0)
+                        tag = "disabled";
+                }
+                
+            <tr>
+                @if (Model.ShoppingCartTotal == 0)
+                {
+                    <td colspan="2" class="text-right">
+                        <a class="btn btn-primary">Check out now!</a>
+                    </td>
+                }
+                else
+                {
+                    <td colspan="2" class="text-right">
+                        <a class="btn btn-primary" asp-controller="Register" asp-action="Index">Check out now!</a>
+                    </td>
+                }
+
+
+                <td colspan="2">
+                    <a class="btn btn-primary" asp-controller="FoodItem" asp-action="Index">Add more food!</a>
+                </td>
+            </tr>
+                <tr>
+                    <td colspan="4">
+                        <a class="btn btn-danger" asp-controller="ShoppingCart" asp-action="ClearCart" style="margin-left:455px;">Clear Cart!</a>
+                    </td>
+                </tr>
+            </tfoot>
+
+        </table>
+
+
+    </div>

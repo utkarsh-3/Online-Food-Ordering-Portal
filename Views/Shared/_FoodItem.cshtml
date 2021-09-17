@@ -1,0 +1,28 @@
+﻿@model FoodItem
+
+<link rel="stylesheet" href="~/css/foodItem.css" type="text/css" />
+<div class="col-sm-3">
+    <div class="card-deck">
+        <div class="card shadow">
+            <img class="card-img-top img-thumbnail" src="@Model.ImageUrl" />
+            <div class="card-body">
+                
+                <h4 class="card-title">@Model.Name</h4>
+                <div>
+                    <h6><span class="subcard">Price: <b>&#8377;@Model.Cost</b></span><span class="ratings">Rating: <b>@Model.Ratings</b><i class="fa fa-star"></i></span></h6>
+                </div>
+                <p class="cardPara">
+                     @Model.ShortDescription 
+                </p>
+                <a class="lnk btn btn-success btn-block" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-foodItemId="@Model.Id">
+                    Add to Cart
+                </a>
+                <a class="lnk btn btn-primary btn-block" asp-controller="FoodItem" asp-action="Details" asp-route-Id="@Model.Id">
+                    View Details
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,41 @@
+﻿<environment include="Development">
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+</environment>
+<div class="d-flex flex-column bd-highlight mb-3" style="margin:0px 40px 0px 40px">
+    <div class="p-2 bd-highlight"><h2>Let the hunt begin ! </h2></div>
+    <div class="d-flex flex-row-reverse bd-highlight">
+        @using (Html.BeginForm("Filter", "FoodItem", FormMethod.Get))
+        {
+            <div class="p-2 bd-highlight">
+                <button type="submit" class="btn btn-light btn-outline-dark" style="padding:0px;">Submit</button>
+            </div>
+            <div class="p-2 bd-highlight">
+                <span>
+                    <b>Food Category :</b>
+                    @Html.DropDownList("foodType", new SelectList(Enum.GetValues(typeof(FoodType))),
+                     "Select Category")
+                </span>
+            </div>
+            <div class="p-2 bd-highlight">
+                <span>
+
+                    <b>Food Choice : </b>
+                    @Html.CheckBox("foodChoice", true, false)<text>Veg-Only</text><br />
+                    
+                </span>
+            </div>
+        }
+        </div>
+</div>
+<div class="row" style="margin:40px;">
+
+    @foreach (var food in Model.FoodMenu)
+    {
+        <partial name="_FoodItem" model="food" />
+
+    }
+
+</div> 

@@ -1,0 +1,44 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<link rel="stylesheet" href="~/css/SignInForm.css" type="text/css" />
+<body class="text-center">
+    <form class="signInForm" id="account" method="post">
+        <img class="mb-4" src="/img/logo.jfif" alt="" width="72" height="72">
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+        <label asp-for="Input.Email" class="sr-only">Email address</label>
+        <input type="email" class="form-control" placeholder="Email address" asp-for="Input.Email" autofocus="">
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+        <label asp-for="Input.Password" class="sr-only">Password</label>
+        <input type="password" asp-for="Input.Password" class="form-control" placeholder="Password" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+        <div class="checkbox mb-3">
+            <label asp-for="Input.RememberMe">
+                <input type="checkbox" asp-for="Input.RememberMe" />
+                @Html.DisplayNameFor(m => m.Input.RememberMe)
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p>
+            <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+        </p>
+        <p>
+            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+        </p>
+        <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    </form>
+
+
+</body>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

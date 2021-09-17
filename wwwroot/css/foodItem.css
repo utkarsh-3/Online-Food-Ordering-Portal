@@ -1,0 +1,15 @@
+.card-title{
+    text-align:center;
+}
+.subcard{
+    float:left;
+    color:black;
+}
+.ratings{
+    float:right;
+   
+}
+.cardPara{
+    padding-top:25px;
+    text-align:center;
+ }
