@@ -11,8 +11,9 @@ This project has following main features :
 The Technologies and Tools used :
 1) .NET EntityFrameworkCore
 2) HTML, CSS, Bootstrap
-3) SQL
-4) Visual Studio 2019
+3) Javascript
+4) SQL
+5) Visual Studio 2019
 
 How to run the project :
 1) Install the required packages and rebuild the solution - refer <EatFit.csproj> file
